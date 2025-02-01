@@ -1,0 +1,132 @@
+.saira-stencil-one-regular {
+    font-family: "Saira Stencil One", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .barrio-regular {
+    font-family: "Barrio", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  
+
+.Banner{
+    text-align: center;
+    font-family: Saira Stencil One;
+}
+
+.Green-Background{
+    background-color: rgba(7, 155, 7, 0.473);
+    box-shadow: 0px 10px 5px rgb(175, 163, 163);
+}
+
+.Green-Text{
+    color: rgb(75, 196, 75);
+    -webkit-text-stroke: 0.5px;
+    -webkit-text-stroke-color: black;
+}
+
+.Bottom-Border{
+    border-bottom: solid 5px green;
+}
+
+.About-Container{
+    display: flex;
+    flex-direction: row;
+    gap: auto;
+    justify-content: space-evenly;
+}
+
+.About-Left{
+    display: flex;
+    flex-direction: column;
+    gap: 500px;
+}
+.About-Left img{
+    height: 150px;
+    width: 150px;
+}
+
+.About-Right{
+    display: flex;
+    flex-direction: column;
+    gap: 500px;
+}
+.About-Right img{
+    height: 150px;
+    width: 150px;
+}
+
+.Skills-Module{
+    display: flex;
+    flex-direction: column;
+    border: solid 5px black;
+    box-shadow: 0px -15px 5px grey;
+    justify-content: center;
+}
+
+.BackEnd{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 15px;
+    font-family: "Saira Stencil One";
+    font-size: 18px;
+}
+
+.BackEnd button{
+    margin-left: 50%;
+    margin-bottom: 5px ;
+}
+
+.LyriQuery{
+    width: 30%;
+}
+
+.DevTogether{
+    width: 30%;
+}
+
+.Untitled{
+    width: 30%;
+}
+
+.Resume{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+.Objective{
+    font-family: "Saira Stencil One";
+    text-align: center;
+    grid-column: 2/5;
+}
+
+.Education{
+    font-family: "Saira Stencil One";
+    text-align: center;
+    grid-column: 2/5;
+    grid-row: 2;
+    margin-top: 15px;
+}
+
+.Work{
+    grid-row: 4;
+    grid-column: 2/5;
+    margin-left: 15px;
+    padding: 10px;
+}
+
+.ResumeSkills{
+    grid-row: 5;
+    margin-left: 15px;
+    margin-top: 15px;
+    grid-column: 2/5;
+}
+
+.Contact{
+    text-align: center;
+    font-family: "Saira Stencil One";
+    font-size: larger;
+}

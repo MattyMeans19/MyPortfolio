@@ -1,0 +1,29 @@
+<%- include("partials/header.ejs") %>
+
+<div class="px-4 py-5 my-5 text-center">
+    <h1 class="display-5 fw-bold text-body-emphasis">Just take a look!</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4 fs-3">This portfolio is a great example of my front-end skills, and a little bit of what I can do with 
+        the back-end.
+        It consists of HTML with Embedded JavaScript and a custom CSS combined with Bootstrap.
+        Below you can find more examples of my front-end skills as well as the more complex back-end skills I have acquired.
+      </p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <form action="skillsModule" method="POST">
+          <button type="submit" class="btn btn-success btn-lg px-4 gap-3" name="display" value="frontEnd">Front-End</button>
+          <button type="submit" class="btn btn-success btn-lg px-4" name="display" value="backEnd" ></a>Back-End</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="Skills-Module mx-3">
+    <% if (display == "frontEnd") { %>
+      <%- include("partials/rps.html") %>
+    <%} else if (display == "backEnd") {%>
+
+      <%}%>
+
+  </div>
+
+<%- include("partials/footer.ejs") %>

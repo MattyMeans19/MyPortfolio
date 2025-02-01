@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matt Means' Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/rps.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barrio&family=Saira+Stencil+One&display=swap" rel="stylesheet">
+</head>
+
+
+<body>
+    <div class="container my-5" id="title">
+      <div class="p-5 text-center Green-Background rounded-3">
+        <h1 class="text-body-emphasis">Rock, Paper, Scissors</h1>
+        <p class="lead">
+          Here I have written a simple Rock, Paper, Scissors game with inline JavaScript, and embedded it as a partial within
+          the skill.ejs I wrote for this skills page. Play to your hearts content! The CPU hand is completely random
+          and generates simultaneously with your choice.
+        </p>
+      </div>
+    </div>
+
+    
+  <div class="RPSModule">
+      <div class="Color-Selection">
+          <h2 id="colorText"> Pick a Color: </h2>
+          <select name="color" id="player">
+              <option value="green">Green</option>
+              <option value="blue">Blue</option>
+              <option value="red">Red</option>
+              <option value="yellow">Yellow</option>
+              <option value="purple">Purple</option>
+              <option value="pink">Pink</option>
+              <option value="orange">Orange</option>
+          </select>
+      </div>
+      <div class="Player-Hand" id="playerHand">
+          <button type="button"  id="rock" onclick="Play('rock')"><img src="images/rock.png"></button>
+          <button type="button"  id="paper" onclick="Play('paper')"><img src="images/paper.png"></button>
+          <button type="button"  id="scissors" onclick="Play('scissors')"><img src="images/scissors.png"></button>
+      </div>
+
+      <h2 class="Instructions">Pick Rock, Paper, or Scissors! </h2>
+
+      <img class="ring" src="images/BoxingRing.jpg">
+      
+      <div class="CPU-Hand" id="CPUHand">
+        <img src="images/rock.png" id="cpu-rock">
+        <img src="images/paper.png" id="cpu-paper">
+        <img src="images/scissors.png" id="cpu-scissors">
+    </div>
+
+    <img src="images/rock.png" class="playerChoice hidden" id="playerRock">
+    <img src="images/paper.png"class="playerChoice hidden" id="playerPaper">
+    <img src="images/scissors.png"class="playerChoice hidden" id="playerScissors">
+    <img src="images/rock.png" class="cpuChoice hidden" id="cpuRock">
+    <img src="images/paper.png" class="cpuChoice hidden" id="cpuPaper">
+    <img src="images/scissors.png" class="cpuChoice hidden" id="cpuScissors">
+
+    <h2 class="Match-Results" id="matchResults"></h2>
+
+    <button type="button" class="ResetButton hidden" id="Reset-Button" onclick="Reset()">Play Again</button>
+
+    <h3 id="wins"></h3>
+    <h3 id="losses"></h3>
+    <h3 id="draws"></h3>
+  </div>
+
+  <script>
+    const colorPicker = document.getElementById("player");
+    var newColor = colorPicker.value;
+    document.getElementById("rock").style.backgroundColor = newColor;
+    document.getElementById("paper").style.backgroundColor = newColor;
+    document.getElementById("scissors").style.backgroundColor = newColor;
+
+
+    colorPicker.addEventListener("change", function() {
+      newColor = colorPicker.value;
+      document.getElementById("rock").style.backgroundColor = newColor;
+      document.getElementById("paper").style.backgroundColor = newColor;
+      document.getElementById("scissors").style.backgroundColor = newColor;
+    });
+
+    const cpuArray = ["rock", "paper", "scissors"];
+    const playerRock = document.getElementById("playerRock");
+    const playerPaper = document.getElementById("playerPaper");
+    const playerScissors = document.getElementById("playerScissors");
+    const cpuRock = document.getElementById("cpuRock");
+    const cpuPaper = document.getElementById("cpuPaper");
+    const cpuScissors = document.getElementById("cpuScissors");
+    const playerHand = document.getElementById("playerHand");
+    const cpuHand = document.getElementById("CPUHand");
+    const resetButton = document.getElementById("Reset-Button");
+    const wins = document.getElementById("wins");
+    const losses = document.getElementById("losses");
+    const draws = document.getElementById("draws");
+
+    let winCount = 0;
+    let loseCount = 0;
+    let drawCount = 0;
+
+    wins.innerHTML = "Wins: " + winCount;
+    losses.innerHTML = "Losses: " + loseCount;
+    draws.innerHTML = "Draws: " + drawCount;
+
+    function Play(playerChoice){
+      var hand = playerChoice;
+      var cpuChoose = Math.floor(Math.random() * cpuArray.length);
+      var cpuChoice = cpuArray[cpuChoose];
+
+      playerHand.classList.add("hidden");
+      cpuHand.classList.add("hidden");
+      if(hand == "rock"){
+        playerRock.style.backgroundColor = newColor;
+        playerRock.classList.remove("hidden");
+        if(cpuChoice == "rock"){
+          cpuRock.classList.remove("hidden");
+          Draw();
+        }
+        else if(cpuChoice == "paper"){
+          cpuPaper.classList.remove("hidden");
+          Lose();
+        }
+        else if(cpuChoice == "scissors"){
+          cpuScissors.classList.remove("hidden");
+          Win();
+        }
+      }
+      if(hand == "paper"){
+        playerPaper.style.backgroundColor = newColor;
+        playerPaper.classList.remove("hidden");
+        if(cpuChoice == "rock"){
+          cpuRock.classList.remove("hidden");
+          Win();
+        }
+        else if(cpuChoice == "paper"){
+          cpuPaper.classList.remove("hidden");
+          Draw();
+        }
+        else if(cpuChoice == "scissors"){
+          cpuScissors.classList.remove("hidden");
+          Lose();
+        }
+      }
+      if(hand == "scissors"){
+        playerScissors.style.backgroundColor = newColor;
+        playerScissors.classList.remove("hidden");
+        if(cpuChoice == "rock"){
+          cpuRock.classList.remove("hidden");
+          Lose();
+        }
+        else if(cpuChoice == "paper"){
+          cpuPaper.classList.remove("hidden");
+          Win();
+        }
+        else if(cpuChoice == "scissors"){
+          cpuScissors.classList.remove("hidden");
+          Draw();
+        }
+      }
+
+      function Win(){
+        const results = document.getElementById("matchResults");
+        const resetButton = document.getElementById("Reset-Button");
+        resetButton.classList.remove("hidden");
+        results.innerHTML = "Congrats, you WIN!"
+        winCount += 1;
+        wins.innerHTML = "Wins: " + winCount;
+      }
+      function Lose(){
+        const results = document.getElementById("matchResults");
+        const resetButton = document.getElementById("Reset-Button");
+        resetButton.classList.remove("hidden");
+        results.innerHTML = "Too bad, you LOSE!"
+        loseCount += 1;
+        losses.innerHTML = "Losses: " + loseCount;
+      }
+      function Draw(){
+        const results = document.getElementById("matchResults");
+        resetButton.classList.remove("hidden");
+        results.innerHTML = "Well that's akward, DRAW!"
+        drawCount += 1;
+        draws.innerHTML = "Draws: " + drawCount;
+      }
+    }
+
+    function Reset(){
+        const results = document.getElementById("matchResults");
+        results.innerHTML = "";
+        resetButton.classList.add("hidden");
+        playerHand.classList.remove("hidden");
+        cpuHand.classList.remove("hidden");
+        cpuScissors.classList.add("hidden");
+        cpuPaper.classList.add("hidden");
+        cpuRock.classList.add("hidden");
+        playerRock.classList.add("hidden");
+        playerPaper.classList.add("hidden");
+        playerScissors.classList.add("hidden");
+      }
+  </script>
+
+</body>
+
+</html>
