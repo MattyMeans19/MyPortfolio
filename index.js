@@ -41,4 +41,4 @@ app.post("/skillsModule", (req,res) =>{
 });
 
 
-app.listen(process.envPORT || 3000);
+app.listen(process.env.PORT || 3000);
