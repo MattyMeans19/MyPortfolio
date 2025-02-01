@@ -9,10 +9,6 @@ app.use(bodyParser.urlencoded({extended: true }));
 
 app.use(express.static("public"));
 
-app.get('/favicon.ico', (req, res) => {
-    res.status(204).end(); // or res.sendFile(path.join(__dirname, 'public', 'favicon.ico'));
-  });
-
 
 app.get("/", (req,res) => {
     res.render("index.ejs");
