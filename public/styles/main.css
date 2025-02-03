@@ -178,5 +178,7 @@
 
     .ME{
         margin-left: 30% ;
+        padding-right: 100px;
+        align-self: center;
     }
 }
