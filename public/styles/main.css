@@ -113,8 +113,10 @@
 
 .Work{
     grid-row: 4;
-    grid-column: 2/5;
-    margin-left: 15px;
+    grid-column: 1/6;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 1em;
     padding: 10px;
 }
 
@@ -122,11 +124,59 @@
     grid-row: 5;
     margin-left: 15px;
     margin-top: 15px;
-    grid-column: 2/5;
+    grid-column: 1/5;
 }
 
 .Contact{
     text-align: center;
     font-family: "Saira Stencil One";
     font-size: larger;
+}
+
+/* 'About Me' adjustment for mobile devices */
+@media (min-width: 300px) and (max-width: 1279px){
+    .About-Container{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        justify-content: center;
+        font-size: 2rem;
+    }
+    
+    .About-Left{
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        justify-content: center;
+        order: 1;
+        gap: 35px;
+    }
+    .About-Left img{
+        height: 50px;
+        width: 50px;
+    }
+    
+    .About-Right{
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        justify-content: center;
+        order: 3;
+        gap: 35px;
+    }
+    .About-Right img{
+        height: 50px;
+        width: 50px;
+    }
+
+    .About-Me{
+        font-size: 1em;
+        order: 2;
+        flex-grow: 1;
+        flex-wrap: wrap;
+    }
+
+    .ME{
+        margin-left: 30% ;
+    }
 }
