@@ -1,0 +1,31 @@
+<%- include("partials/header")%>
+
+        <div class="Header">
+            <h1 class="Title">LyriQuery</h1>
+            <p class="Moto">Find those catchy tunes that get stuck in your head!</p>
+        </div>
+
+        <div class="MusicData">
+            <form action="/search" method="POST" id="searchBar">
+                <input type="text" name="artist" placeholder="Artist" required>
+                <input type="text" name="song" placeholder="Song Title" required>
+                <input type="submit" value="OK">
+            </form>
+            <%if (locals.lyrics && locals.song && locals.artist) {%>
+                <h2 class="SongInfo"><%- song %> by <%- artist %> </h2>
+                <p class="lyrics">
+                <%- lyrics %>
+                </p> 
+            <%} else if (locals.lyrics && !locals.song || locals.lyrics && !locals.artist){ %>
+                <p class="lyrics">
+                  <%- lyrics %>
+                </p>
+            <%} else{ %>
+                <p class="lyrics">
+                    Search to find Lyrics!
+                  </p>
+            <% } %>
+        </div>
+
+<%- include("partials/footer.ejs") %>
+
